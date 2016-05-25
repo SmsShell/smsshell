@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="application/vnd.wap.xhtml+xml;charset=utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <style type="text/css">
+            body {
+                padding: 0;
+                line-height: 150%;
+                background:#ffffff;
+                width:100%;
+                margin:0 auto;
+            }
+            
+            .lazy{
+    			display: block;
+			}
+            
+            .tCenter {
+                text-align: center
+            }
+            
+            .marTop2 {
+                margin-top: 2px
+            }
+            
+            .marTop6 {
+                margin-top: 6px
+            }
+            
+            .marTop10 {
+                margin-top: 10px
+            }
+            
+            .marTop20 {
+                margin-top: 20px
+            }
+            
+            .marTop30 {
+                margin-top: 30px
+            }
+            
+            .marTop50 {
+                margin-top: 10px
+            }
+            
+            .marLeft10 {
+                margin-left: 10px
+            }
+            
+            .marRight10 {
+                margin-right: 10px
+            }
+            
+            .marBottom50 {
+                margin-bottom: 10px
+            }
+            
+            .atitle {
+                color: #000000;
+                padding: 3px 0;
+                font-size: 18px;
+                font-weight: bold;
+            }
+            
+            .atime {
+                color: #949494;
+                padding: 0px 0;
+                font-size: 12px;
+            }
+            
+            .loading {
+                text-align: center;
+            }
+			
+			.content {
+                color: #636363;
+                font-size: 15px;
+                padding: 0 10px 0 10px;
+            }
+            
+            .phonenumber {
+                color: #000000;
+                font-size: 15px;
+                padding: 0 10px 0 10px;
+            }
+            
+            .content p {
+                margin-bottom:20px;
+            }
+            
+            .outsidewrap {
+            	width:96%;
+            	height:100%;
+            	margin:0 auto;
+            	overflow:hidden;
+            }
+            /*
+            img {
+                border: none;width:100%;
+                src: url("bk_news.png") no-repeat scroll right center transparent;
+            }*/
+            img {
+            	border: none;width:100%;
+            }
+            
+            img.outside {
+                border: none;width:100%;
+            }
+            img.star{
+            	border: none;width:auto;margin:0 auto;
+            }
+            img.comment {
+                border: none;width:auto;margin:0 auto;
+            }
+            a img{width:auto;vertical-align:-3px;}
+            /*
+                background: url("bk_news.png") no-repeat scroll right center transparent;
+            .rtitile{height:30px;line-height:30px;width:100%;overflow:hidden;font-size:12px;color:#949494;}
+            .rtitile span{display:inline-block;float:left;width:25%;height:100%;overflow:hidden;text-align:center;border:0px;}
+        	*/
+        </style>
+
+        <script type="text/javascript" src="jquery-1.4.4.min.js">
+        </script>
+        
+        <script type="text/javascript" src="jquery.lazyload.js"></script>
+        <script type="text/javascript">
+        	function show() {
+        		if (window.news) {
+				    window.news.show();
+				} else {
+				}
+        	}
+        	
+        	function showNum(c) {
+        		if (window.news) {
+				    window.news.showNum(c.innerHTML);
+				} else {
+				}
+        	}
+        </script>
+    </head>
+    <body style="margin:0px; padding:0px;">
+        <div id="article_body" class="content" onclick="show()"></div>
+   		<script type="text/javascript" src="img_deal.js"></script>
+    </body>
+</html>
+

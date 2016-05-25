@@ -1,0 +1,198 @@
+<!DOCTYPE html> 
+<html>
+	<head>
+	<meta charset="gb2312">
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<title>号码百事通demo</title> 
+	<link rel="stylesheet"  href="css/jquery.mobile-1.2.0.css" />  
+	<script src="js/jquery.js"></script>
+	<script src="js/jquery.mobile-1.2.0.js"></script>
+	<script type="text/javascript">
+	function sendToAndroid(action){
+		var requestData;
+		if('title' == action){
+			requestData = encodeURI("测试title");
+		}else if('getDeviceInfo' == action){//获取手机信息
+			requestData = '';
+		}else if('reload' == action){//刷新指定页面
+			requestData = '0';
+		}else if('inputControl' == action){//输入法控制
+			requestData = '0';
+		}else if('checkService' == action){//新服务提醒
+			requestData = encodeURI("100");
+		}else if('appShare' == action){//应用分享
+			requestData = encodeURI("分享测试");
+		}else if('contacts' == action){//获取联系人
+			requestData = '';
+		}else if('openWeixin' == action){//打开微信
+			requestData = '';
+		}else if('tel' == action){//拨打电话
+			requestData = '10000';
+		}else if('checkPlugin' == action){//检测插件
+			requestData = encodeURI("{'pluginList':[{'packageName':'com.suishouxie.freenote','versionName':'1.0.0.0','name':'随手写','url':'http://www.apk.anzhi.com/apk/201208/24/com.suishouxie.freenote_88662800_0.apk','versionCode':1000,'iconUrl':'http://img4.anzhi.com/icon/201208/24/com.suishouxie.freenote_88662800_0.png','desc':'介绍','type':2}]}");//0已安装，不用更新  1已安装，需要更新  2没安装需要下载
+		}else if('sms' == action){//发送短信
+			requestData = encodeURI("{'phone':'18616815565','content':'短信测试'}");
+		}else if('email' == action){//发送email
+			requestData = encodeURI("{'title':'send test','address':'18616815565@qq.com','content':'邮件测试'}");
+		}else if('share' == action){//分享
+			requestData = encodeURI("分享测试");
+		}else if('video' == action){//播放视频
+			requestData = encodeURI("http://elife.wikielife.com/infoV3/download/test.flv");
+		}else if('audio' == action){//播放音频
+			requestData = encodeURI("http://elife.wikielife.com/infoV3/download/test.mp3");
+		}else if('download' == action){//下载apk:
+			requestData = encodeURI("{'package':'com.suishouxie.freenote','interface':'com.qukool.login','name':'随手写','url':'http://www.apk.anzhi.com/apk/201208/24/com.suishouxie.freenote_88662800_0.apk','versionCode':1000,'iconUrl':'http://img4.anzhi.com/icon/201208/24/com.suishouxie.freenote_88662800_0.png','desc':'介绍','params':[{'key':'index','value':'1'}]}");
+		}else if('openApk' == action){//打开apk
+			requestData = encodeURI("{'package':'com.besttone.testapk','interface':'com.besttone.testapk','name':'火车票','url':'http://elife.wikielife.com:80/infoV3/uploadImages/games/apkfiles/v1.6.1.7_HighRail_COMMON_20120313_P.apk','versionCode':1,'iconUrl':'http://img4.anzhi.com/icon/201208/24/com.suishouxie.freenote_88662800_0.png','desc':'介绍','params':[{'key':'index','value':'1'}]}");
+		}else if('subscribe' == action){//订阅
+			requestData = encodeURI("10");
+		}else if('sendLoginInfo' == action){//登录成功传递登录信息
+			requestData = encodeURI("{'token':'token','username':'18616815565@qq.com','handset':'18616815565'}");
+		}else if('getLoginInfo' == action){//获取登录信息
+			requestData = '';
+		}else if('getLocation' == action){//定位
+			requestData = '';
+		}else if('showMap' == action){//地图展示
+			requestData = encodeURI("{'pois':[{'name':'东华大学','address':'延安西路1840号','lat':'31.1209412','lng':'121.6083456'}],citycode:310100,downloadinfo:{url:'http://wap.118114.cn/sdownload/android/Navigation.apk?fr=bst&pd=2752',packagename:'com.best',appname:'天翼导航',iconurl:'http://116.228.55.23/images/sdownload/android/Navigation/navigation-b.png'}}");
+		}else if('interface' == action){//调用app接口
+			requestData = encodeURI("{'package':'com.besttone.highrail.plugin','interface':'com.besttone.plugin.order','name':'火车票','url':'http://114.80.68.225:8001/user1/highrail.apk','versionCode':1623,'iconUrl':'http://114.80.68.225:8001/user1/highrail.png','params':[{'key':'index','value':'1'}]}");
+		}else if('getVoice' == action){//获取声音
+			requestData = '';
+		}else if('setSubscribe' == action){//订阅
+			requestData = '1,2';
+		}else if('getSubscribe' == action){//获取订阅
+			requestData = '';
+		}else if('getArea' == action){//获取省份
+			requestData = '';
+		}else if('changeBrowser' == action){//跳出浏览器
+			requestData = encodeURI("{'url':'http://m.taobao.com','type':0,'title':'淘宝'}");  //0客户端浏览器  //1系统第三方浏览器//2第三方浏览器/3返回直接关闭当前activity
+		}else if('sendToFriend' == action){//发送给好友
+			requestData = encodeURI("发送给好友测试");
+		}else if('tiileButton' == action){//切换省份/后退按钮
+			requestData = '1';  //0是后退  1是切换省份
+		}else if('changeArea' == action){//切换省份dialog
+			requestData = '';  
+		}else if('shareSettings' == action){//分享设置
+			requestData = '';  
+		}
+		else if('getStats' == action){//获取统计信息
+			requestData = '';  
+		}else if('LoginOut' == action){//注销
+			requestData = '';  
+		}else if('finish' == action){//关闭当前页面
+			requestData = '';  
+		}else if('uninstall' == action){//卸载插件
+			requestData = 'com.besttone.highrail.plugin';
+		}
+		
+		window.android.execute(action,requestData);
+	}
+	function androidCallBack(result){
+		var text = "";
+		if('title' == result.action){
+			text = '修改title成功'
+		}else if('getDeviceInfo' == result.action){//获取手机信息
+			text = result.IMSI+"|"+result.IMEI+"|"+result.MANUFACTURER+"|"+result.MODEL+"|"+result.OS+"|"+result.RESOLUTION+"|"+result.CIPHERIMSI+"|"+result.STATUS+"|"+result.MESSAGE;
+		}else if('contacts' == result.action){//获取联系人
+			text = result.PHONE+"|"+result.STATUS+"|"+result.MESSAGE;
+		}else if('tel' == result.action){//拨打电话
+			text = result.STATUS+"|"+result.MESSAGE;
+		}else if('sms' == result.action){//发送短信
+			text = result.STATUS+"|"+result.MESSAGE;
+		}else if('email' == result.action){//发送email
+			text = result.STATUS+"|"+result.MESSAGE;
+		}else if('share' == result.action){//分享
+			text = result.STATUS+"|"+result.MESSAGE;
+		}else if('video' == result.action){//播放视频
+			text = result.STATUS+"|"+result.MESSAGE;
+		}else if('audio' == result.action){//播放音频
+			text = result.STATUS+"|"+result.MESSAGE;
+		}else if('download' == result.action){//下载apk:
+			text = result.STATUS+"|"+result.MESSAGE;
+		}else if('openApk' == result.action){//打开apk
+			text = result.STATUS+"|"+result.MESSAGE;
+		}else if('subscribe' == result.action){//订阅
+			text = result.STATUS+"|"+result.MESSAGE;
+		}else if('sendLoginInfo' == result.action){//登录成功传递登录信息
+			text = result.STATUS+"|"+result.MESSAGE;
+		}else if('getLoginInfo' == result.action){//获取登录信息
+			text = result.USERNAME+"|"+result.TOKEN+"|"+result.HANDSET+"|"+result.STATUS+"|"+result.MESSAGE;
+		}else if('getLocation' == result.action){//定位
+			text = result.PROVINCE+"|"+result.CITY+"|"+result.DIST+"|"+result.ADDRESS+"|"+result.LAT+"|"+result.LNG+"|"+result.STATUS+"|"+result.MESSAGE;
+		}else if('showMap' == result.action){//地图展示
+			text = '展示成功!';
+		}else if('interface' == result.action){//调用app接口
+			text = '调用成功！';
+		}else if('getVoice' == result.action){//调用app接口
+			text = result.CONTENT+"|"+result.STATUS+"|"+result.MESSAGE;
+		}else if('setSubscribe' == result.action){//订阅
+			text = result.STATUS+"|"+result.MESSAGE;
+		}else if('getSubscribe' == result.action){//获取订阅
+			text = result.IDS+"|"+result.STATUS+"|"+result.MESSAGE;
+		}else if('checkPlugin' == result.action){//版本检测
+			text = result.STATUS+"|"+result.MESSAGE+"|"+result.PLUGIN;
+		}else if('getArea' == result.action){//获取省份
+			text = result.STATUS+"|"+result.MESSAGE+"|"+result.AREANAME+"|"+result.AREACODE+"|"+result.ADDRESS+"|"+result.LAT+"|"+result.LNG+"|"+result.CITYNAME+"|"+result.CITYCODE+"|"+result.DIST;
+		}else if('changeBrowser' == result.action){//跳出浏览器
+			text = result.STATUS+"|"+result.MESSAGE;
+		}else if('sendToFriend' == result.action){//发送给好友
+			text = result.STATUS+"|"+result.MESSAGE;
+		}else if('changeArea' == result.action){//切换省份
+			text = result.STATUS+"|"+result.MESSAGE+"|"+result.AREANAME+"|"+result.AREACODE+"|"+result.CITYNAME+"|"+result.CITYCODE;
+		}else if('getStats' == result.action){//获取统计信息
+			text = text = result.IMSI+"|"+result.IMEI+"|"+result.MANUFACTURER+"|"+result.MODEL+"|"+result.OS+"|"+result.RESOLUTION+"|"+result.STATUS+"|"+result.MESSAGE+result.AREANAME+"|"+result.AREACODE+"|"+result.CITYNAME+"|"+result.CITYCODE+"|"+result.HANDSET+"|"+result.LAT+"|"+result.LNG;
+		}else if('LoginOut' == result.action){//注销
+			text = result.STATUS+"|"+result.MESSAGE;
+		}
+		document.getElementById("result").innerText =text;	
+	}
+	
+	
+
+	</script>
+</head>
+<body onload="sendToAndroid('title')"> 
+<div id="result"></div>
+<div data-role="collapsible" data-collapsed="true" data-theme="b" data-content-theme="d">
+	<h3>交互api</h3>
+	<ul data-role="listview" data-theme="c" data-dividertheme="d">
+		<li><a href="javascript:sendToAndroid('getDeviceInfo')">获取手机信息</a></li>
+		<li><a href="javascript:sendToAndroid('contacts')">获取通讯录</a></li>	
+		<li><a href="javascript:sendToAndroid('finish')">关闭当前ativity</a></li>	
+		<li><a href="javascript:sendToAndroid('uninstall')">卸载插件</a></li>	
+		<li><a href="javascript:sendToAndroid('reload')">刷新指定板块</a></li>	
+		<li><a href="javascript:sendToAndroid('appShare')">应用分享</a></li>
+		<li><a href="javascript:sendToAndroid('newService')">新服务提醒</a></li>
+		<li><a href="javascript:sendToAndroid('inputControl')">输入发控制</a></li>
+		<li><a href="javascript:sendToAndroid('checkPlugin')">检测插件版本</a></li>
+		<li><a href="javascript:sendToAndroid('getArea')">获取省份</a></li>
+		<li><a href="javascript:sendToAndroid('tel')">拨打电话</a></li>
+		<li><a href="javascript:sendToAndroid('openWeixin')">打开微信</a></li>
+		<li><a href="javascript:sendToAndroid('sms')">发送短信</a></li>
+		<li><a href="javascript:sendToAndroid('sendToFriend')">发送给好友</a></li>
+		<li><a href="javascript:sendToAndroid('email')">Email</a></li>		
+		<li><a href="javascript:sendToAndroid('share')">分享</a></li>		
+		<li><a href="javascript:sendToAndroid('shareSettings')">分享设置</a></li>	
+		<li><a href="javascript:sendToAndroid('video')">视频播放</a></li>
+		<li><a href="javascript:sendToAndroid('audio')">音频播放</a></li>	
+		<li><a href="http:\\www.qq.com?target=blank">跳出当前浏览器</a></li>	
+		<li><a href="javascript:sendToAndroid('download')">下载apk并安装</a></li>	
+		<li><a href="javascript:sendToAndroid('openApk')">打开其他apk</a></li>	
+		<li><a href="javascript:sendToAndroid('setSubscribe')">订阅功能</a></li>	
+		<li><a href="javascript:sendToAndroid('getSubscribe')">获取订阅信息</a></li>	
+		<li><a href="javascript:sendToAndroid('sendLoginInfo')">传递登录数据</a></li>	
+		<li><a href="javascript:sendToAndroid('getLoginInfo')">获取登录数据</a></li>	
+		<li><a href="javascript:sendToAndroid('LoginOut')">注销</a></li>	
+		<li><a href="javascript:sendToAndroid('getLocation')">定位</a></li>	
+		<li><a href="javascript:sendToAndroid('showMap')">地图</a></li>		
+		<li><a href="javascript:sendToAndroid('getStats')">统计</a></li>		
+		<li><a href="javascript:sendToAndroid('interface')">调用应用接口</a></li>	
+		<li><a href="javascript:sendToAndroid('getVoice')">语音输入</a></li>
+		<li><a href="javascript:sendToAndroid('changeBrowser')">跳出tab</a></li>
+		<li><a href="javascript:sendToAndroid('changeArea')">切换省份dialog</a></li>
+		<li><a href="javascript:sendToAndroid('tiileButton')">切换省份/后退按钮</a></li>
+	</ul>
+</div>	
+	
+</body>
+</html>
